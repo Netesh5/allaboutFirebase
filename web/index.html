@@ -100,5 +100,21 @@
       loadMainDartJs();
     }
   </script>
+  <script type="module">
+    
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js";
+   
+    const firebaseConfig = {
+      apiKey: "AIzaSyBw2H-ODzV2Pm8C8KpYInaI4ilZJ79R2QY",
+      authDomain: "fir-functions-1a419.firebaseapp.com",
+      projectId: "fir-functions-1a419",
+      storageBucket: "fir-functions-1a419.appspot.com",
+      messagingSenderId: "735913926564",
+      appId: "1:735913926564:web:a6f3e161942ff4c3726b31"
+    };
+  
+  
+    const app = initializeApp(firebaseConfig);
+  </script>
 </body>
 </html>
