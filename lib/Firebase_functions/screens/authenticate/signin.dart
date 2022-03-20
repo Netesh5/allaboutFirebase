@@ -27,7 +27,7 @@ class siginState extends State<signin> {
                 debugPrint(result);
               } else {
                 debugPrint("Signed in");
-                debugPrint(result);
+                debugPrint(result.uid);
               }
             },
           )
