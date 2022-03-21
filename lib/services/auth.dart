@@ -22,6 +22,12 @@ class AuthServices {
     }
   }
 
+  Stream<users?> get user {
+    return _auth
+        .authStateChanges()
+        .map((User? user) => _userfromFirebaseuser(user!));
+  }
+
 //sign in with email-password
 
 }
