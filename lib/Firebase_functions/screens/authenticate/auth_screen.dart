@@ -38,7 +38,7 @@ class _authState extends State<auth> {
                 children: [
                   const Text("Don't have an account?"),
                   TextButton(
-                    child: const Text("Sign up"),
+                    child: const Text("Register Now"),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => register()));
