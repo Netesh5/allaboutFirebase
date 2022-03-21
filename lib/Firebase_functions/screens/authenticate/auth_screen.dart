@@ -1,3 +1,4 @@
+import 'package:firebaseapp/Firebase_functions/screens/authenticate/register.dart';
 import 'package:firebaseapp/Firebase_functions/screens/authenticate/signin.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,10 @@ class _authState extends State<auth> {
                   const Text("Don't have an account?"),
                   TextButton(
                     child: const Text("Sign up"),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => register()));
+                    },
                   ),
                 ],
               ),
