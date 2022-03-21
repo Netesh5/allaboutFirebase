@@ -30,6 +30,20 @@ class _authState extends State<auth> {
               ),
               sign_in_with_email_password(),
               const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Don't have an account?"),
+                  TextButton(
+                    child: const Text("Sign up"),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              const Divider(),
+              const SizedBox(
                 height: 20,
               ),
               signin(),

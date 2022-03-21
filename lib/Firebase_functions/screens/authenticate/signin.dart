@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 Widget signin() {
   AuthServices _auth = AuthServices();
   return RaisedButton(
-    child: const Text("Sign in Anonomuslyl"),
+    child: const Text("Sign in Anonomusly"),
+    elevation: 0,
+    color: Colors.amberAccent,
     onPressed: () async {
       var result = await _auth.siginAnono();
       if (result == null) {
@@ -37,6 +39,7 @@ class _sign_in_with_email_passwordState
           height: 20,
         ),
         TextFormField(
+          onChanged: (value) {},
           decoration: InputDecoration(
               labelText: "E-mail",
               hintText: "Enter your email",
@@ -48,6 +51,7 @@ class _sign_in_with_email_passwordState
         ),
         TextFormField(
           obscureText: _isobscure,
+          onChanged: (value) {},
           decoration: InputDecoration(
               suffixIcon: IconButton(
                 icon: Icon(
