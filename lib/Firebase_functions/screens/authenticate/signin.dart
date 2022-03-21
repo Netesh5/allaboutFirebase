@@ -18,51 +18,68 @@ Widget signin() {
   );
 }
 
-Widget sign_in_with_email_password() {
-  bool state = true;
-  return Column(
-    children: [
-      const SizedBox(
-        height: 20,
-      ),
-      TextFormField(
-        decoration: InputDecoration(
-            labelText: "E-mail",
-            hintText: "Enter your email",
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      TextFormField(
-        obscureText: state,
-        decoration: InputDecoration(
-            suffixIcon: IconButton(
-              icon: Icon(
-                  // ignore: dead_code
-                  state ? Icons.visibility_off : Icons.visibility),
-              onPressed: () {
-                setState() {
-                  state = false;
-                }
-              },
-            ),
-            labelText: "Password",
-            hintText: "Enter your password",
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      // ignore: avoid_unnecessary_containers
-      Container(
-        color: Colors.amberAccent,
-        width: 150,
-        child: TextButton(
-          onPressed: () {},
-          child: const Text("Sign in"),
+// Widget sign_in_with_email_password() {
+//   bool state = true;
+class sign_in_with_email_password extends StatefulWidget {
+  @override
+  State<sign_in_with_email_password> createState() =>
+      _sign_in_with_email_passwordState();
+}
+
+class _sign_in_with_email_passwordState
+    extends State<sign_in_with_email_password> {
+  @override
+  bool _isobscure = true;
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(
+          height: 20,
         ),
-      )
-    ],
-  );
+        TextFormField(
+          decoration: InputDecoration(
+              labelText: "E-mail",
+              hintText: "Enter your email",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        TextFormField(
+          obscureText: _isobscure,
+          decoration: InputDecoration(
+              suffixIcon: IconButton(
+                icon: Icon(
+                    // ignore: dead_code
+                    _isobscure ? Icons.visibility_off : Icons.visibility),
+                onPressed: () {
+                  setState(() {
+                    _isobscure = !_isobscure;
+                  });
+                },
+              ),
+              labelText: "Password",
+              hintText: "Enter your password",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        // ignore: avoid_unnecessary_containers
+        Container(
+          color: Colors.amberAccent,
+          width: 150,
+          child: TextButton(
+            onPressed: () {},
+            child: const Text(
+              "Sign in",
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+        )
+      ],
+    );
+  }
 }
