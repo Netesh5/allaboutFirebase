@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseapp/model/user.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,14 @@ class AuthServices {
     return _auth
         .authStateChanges()
         .map((User? user) => _userfromFirebaseuser(user!));
+  }
+
+  Future signout() async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
 //sign in with email-password

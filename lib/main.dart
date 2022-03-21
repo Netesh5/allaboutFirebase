@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebaseapp/model/user.dart';
+import 'package:firebaseapp/services/auth.dart';
 import 'package:firebaseapp/wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,9 +26,15 @@ class firebase extends StatefulWidget {
 class firebaseState extends State<firebase> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: wrapper(),
+    return StreamProvider<users?>.value(
+      catchError: (_, __) =>
+          null, //StreamProvider<users?>, but no `catchError` was provided.
+      value: AuthServices().user,
+      initialData: null,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: wrapper(),
+      ),
     );
   }
 }
