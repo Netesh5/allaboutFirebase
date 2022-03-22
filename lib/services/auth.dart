@@ -67,8 +67,33 @@ class AuthServices {
 
   //Sign in with google
   Future sign_in_with_google() async {
-    final GoogleSignIn googleSignin =
-        GoogleSignIn(); //Instance of googel signin
-    final googleUser = await googleSignin.signIn();
+    final GoogleSignIn _googleSignin = GoogleSignIn(
+      scopes: [
+        'email',
+        'https://www.googleapis.com/auth/contacts.readonly',
+      ],
+    ); //Instance of googel signin
+    try {
+      GoogleSignInAccount? googleSignInAccount =
+          await _googleSignin.signIn(); //to generate popup of gmail accounts
+      if (googleSignInAccount != null) {
+        GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+
+        AuthCredential credential = GoogleAuthProvider.credential(
+            accessToken: googleSignInAuthentication.accessToken,
+            idToken: googleSignInAuthentication.idToken);
+
+        try {
+          UserCredential user = await _auth.signInWithCredential(credential);
+        } catch (e) {
+          debugPrint(e.toString());
+        }
+      } else {
+        return null;
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }

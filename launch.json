@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "app_name",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-hostname",
+                "localhost",
+                "--web-port",
+                "5000"
+            ]
+        },
+    ]
+}
