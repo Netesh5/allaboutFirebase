@@ -1,3 +1,4 @@
+import 'package:firebaseapp/services/auth.dart';
 import "package:flutter/material.dart";
 
 class register extends StatefulWidget {
@@ -11,6 +12,8 @@ class _registerState extends State<register> {
   bool _isobscure = true;
   String? email;
   String? password;
+  String? error;
+  AuthServices _auth = AuthServices();
   final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,9 @@ class _registerState extends State<register> {
                   return value!.isEmpty ? 'Enter your email' : null;
                 },
                 onChanged: (value) {
-                  email = value;
+                  setState(() {
+                    email = value;
+                  });
                 },
                 decoration: InputDecoration(
                     labelText: "E-mail",
@@ -60,7 +65,9 @@ class _registerState extends State<register> {
                 },
                 obscureText: _isobscure,
                 onChanged: (value) {
-                  password = value;
+                  setState(() {
+                    password = value;
+                  });
                 },
                 decoration: InputDecoration(
                     suffixIcon: IconButton(
@@ -86,10 +93,15 @@ class _registerState extends State<register> {
                 color: Colors.amberAccent,
                 width: 150,
                 child: TextButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formkey.currentState!.validate()) {
-                      debugPrint(email);
-                      debugPrint(password);
+                      dynamic result = await _auth.register_with_email_password(
+                          email!, password!);
+                      if (result == null) {
+                        setState(() {
+                          error = 'Enter valid email and password';
+                        });
+                      }
                     }
                   },
                   child: const Text(
@@ -97,7 +109,11 @@ class _registerState extends State<register> {
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              //Text(error!,style: const TextStyle(color: Colors.red),)
             ],
           ),
         ),
