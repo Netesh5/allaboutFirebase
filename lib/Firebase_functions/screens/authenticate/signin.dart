@@ -163,24 +163,26 @@ class sign_in_with_google extends StatefulWidget {
 }
 
 class _sign_in_with_googleState extends State<sign_in_with_google> {
+  AuthServices _auth = AuthServices();
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        image: const DecorationImage(
-            image: AssetImage('Assets/Images/google_logo.png'),
-            fit: BoxFit.cover),
         color: Colors.amberAccent,
         borderRadius: BorderRadius.circular(8),
       ),
       width: 200,
       height: 40,
-      child: TextButton(
-          onPressed: () {},
-          child: const Text(
-            "Sign in with Google",
-            style: TextStyle(color: Colors.black),
-          )),
+      child: TextButton.icon(
+        onPressed: () async {
+          final result = await _auth.sign_in_with_google();
+        },
+        label: const Text(
+          "Sign in with Google",
+          style: TextStyle(color: Colors.black),
+        ),
+        icon: Image.asset('Assets/Images/google_logo.png'),
+      ),
     );
   }
 }

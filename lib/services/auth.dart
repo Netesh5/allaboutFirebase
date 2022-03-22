@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseapp/model/user.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthServices {
 //sign in anonoymus
@@ -65,7 +66,9 @@ class AuthServices {
   }
 
   //Sign in with google
-  // Future sign_in_with_google(){
-  //   UserCredential result=_auth.
-  // }
+  Future sign_in_with_google() async {
+    final GoogleSignIn googleSignin =
+        GoogleSignIn(); //Instance of googel signin
+    final googleUser = await googleSignin.signIn();
+  }
 }
