@@ -63,4 +63,9 @@ class AuthServices {
       return null;
     }
   }
+
+  //Sign in with google
+  // Future sign_in_with_google(){
+  //   UserCredential result=_auth.
+  // }
 }

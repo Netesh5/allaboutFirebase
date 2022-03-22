@@ -46,11 +46,23 @@ class _authState extends State<auth> {
                   ),
                 ],
               ),
-              const Divider(),
+              const Divider(
+                indent: 50,
+                endIndent: 50,
+              ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               signin(),
+              const SizedBox(
+                height: 15,
+              ),
+              const Divider(
+                indent: 50,
+                endIndent: 50,
+              ),
+              const SizedBox(height: 15),
+              sign_in_with_google(),
             ],
           ),
         ),

@@ -15,6 +15,7 @@ class _registerState extends State<register> {
   String? error;
   AuthServices _auth = AuthServices();
   final _formkey = GlobalKey<FormState>();
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,16 +91,24 @@ class _registerState extends State<register> {
               ),
               // ignore: avoid_unnecessary_containers
               Container(
-                color: Colors.amberAccent,
                 width: 150,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.amberAccent,
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: TextButton(
                   onPressed: () async {
                     if (_formkey.currentState!.validate()) {
+                      setState(() {
+                        loading = true;
+                      });
                       dynamic result = await _auth.register_with_email_password(
                           email!, password!);
                       if (result == null) {
                         setState(() {
                           error = 'Enter valid email and password';
+                          loading = false;
                         });
                       }
                     }
