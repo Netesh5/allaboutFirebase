@@ -1,4 +1,5 @@
 // ignore_for_file: deprecated_member_use
+import 'package:firebaseapp/Firebase_functions/screens/authenticate/sign_with_mobile_screen.dart';
 import 'package:firebaseapp/loading.dart';
 import 'package:firebaseapp/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class _signinState extends State<signin> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
+      width: 200,
       height: 40,
       child: RaisedButton(
         shape: RoundedRectangleBorder(
@@ -118,7 +119,7 @@ class _sign_in_with_email_passwordState
           ),
           // ignore: avoid_unnecessary_containers
           Container(
-            width: 150,
+            width: 200,
             height: 40,
             decoration: BoxDecoration(
               color: Colors.amberAccent,
@@ -182,6 +183,43 @@ class _sign_in_with_googleState extends State<sign_in_with_google> {
           style: TextStyle(color: Colors.black),
         ),
         icon: Image.asset('Assets/Images/google_logo.png'),
+      ),
+    );
+  }
+}
+
+class sign_in_with_mobile_button extends StatefulWidget {
+  @override
+  State<sign_in_with_mobile_button> createState() =>
+      sign_in_with_mobile_buttonState();
+}
+
+class sign_in_with_mobile_buttonState
+    extends State<sign_in_with_mobile_button> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.amberAccent,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      width: 200,
+      height: 40,
+      child: TextButton.icon(
+        onPressed: () async {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => signinwithmobile_screen()));
+        },
+        label: const Text(
+          "Sign in with Mobile",
+          style: TextStyle(color: Colors.black),
+        ),
+        icon: const Icon(
+          Icons.phone,
+          color: Colors.black,
+        ),
       ),
     );
   }

@@ -91,7 +91,7 @@ class _registerState extends State<register> {
               ),
               // ignore: avoid_unnecessary_containers
               Container(
-                width: 150,
+                width: 200,
                 height: 40,
                 decoration: BoxDecoration(
                   color: Colors.amberAccent,
