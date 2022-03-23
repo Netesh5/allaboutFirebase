@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "app_name",
+            "name": "firebaseapp",
             "request": "launch",
             "type": "dart",
             "args": [
@@ -13,6 +13,6 @@
                 "--web-port",
                 "5000"
             ]
-        },
+        }
     ]
 }
