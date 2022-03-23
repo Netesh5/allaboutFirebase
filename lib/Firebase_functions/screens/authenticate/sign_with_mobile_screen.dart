@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:firebaseapp/services/auth.dart';
+import 'package:flutter/semantics.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/style.dart';
@@ -16,6 +18,10 @@ class _signinwithmobile_screenState extends State<signinwithmobile_screen> {
   int start = 30;
   String button_name = "Send";
   bool sendbtn_enable = true;
+  String? phoneNumber;
+  AuthServices _auth = AuthServices();
+  String? verificationIdfinal;
+  String? smsCode;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +49,11 @@ class _signinwithmobile_screenState extends State<signinwithmobile_screen> {
                   height: 50,
                 ),
                 TextFormField(
+                  onChanged: (value) {
+                    setState(() {
+                      phoneNumber = value;
+                    });
+                  },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       hintText: "Enter your phone number",
@@ -60,13 +71,15 @@ class _signinwithmobile_screenState extends State<signinwithmobile_screen> {
                       ),
                       suffixIcon: InkWell(
                         onTap: sendbtn_enable
-                            ? () {
+                            ? () async {
                                 setState(() {
                                   start = 30;
-                                  timer();
                                   sendbtn_enable = !true;
                                   button_name = "Resend";
                                 });
+                                await _auth.verify_phone_number(
+                                    context, "+977 $phoneNumber", setdata);
+                                debugPrint(phoneNumber);
                               }
                             : null,
                         child: Padding(
@@ -132,7 +145,7 @@ class _signinwithmobile_screenState extends State<signinwithmobile_screen> {
                   ]),
                 ),
                 const SizedBox(
-                  height: 60,
+                  height: 100,
                 ),
                 submit_btn(),
               ],
@@ -157,6 +170,9 @@ class _signinwithmobile_screenState extends State<signinwithmobile_screen> {
       fieldStyle: FieldStyle.underline,
       onCompleted: (pin) {
         print("Completed: " + pin);
+        setState(() {
+          smsCode = pin;
+        });
       },
     );
   }
@@ -186,12 +202,21 @@ class _signinwithmobile_screenState extends State<signinwithmobile_screen> {
         color: Colors.amberAccent,
       ),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          _auth.sign_with_phoneNumber(verificationIdfinal!, smsCode!, context);
+        },
         child: const Text(
           "Submit",
           style: TextStyle(color: Colors.black),
         ),
       ),
     );
+  }
+
+  void setdata(String verificationId) {
+    setState(() {
+      verificationIdfinal = verificationId;
+    });
+    timer();
   }
 }

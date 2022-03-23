@@ -85,7 +85,7 @@ class AuthServices {
             idToken: googleSignInAuthentication.idToken);
 
         try {
-          UserCredential user = await _auth.signInWithCredential(credential);
+          UserCredential result = await _auth.signInWithCredential(credential);
         } catch (e) {
           debugPrint(e.toString());
         }
@@ -95,5 +95,63 @@ class AuthServices {
     } catch (e) {
       debugPrint(e.toString());
     }
+  }
+
+  //signin with mobile
+  Future verify_phone_number(
+      BuildContext context, String phoneNumber, Function setdata) async {
+    //Handlers
+    // ignore: prefer_function_declarations_over_variables
+    PhoneVerificationCompleted verificationCompleted =
+        (PhoneAuthCredential phoneAuthCredential) async {
+      showsnackbar(context, "Verification completed");
+    };
+    // ignore: prefer_function_declarations_over_variables
+    PhoneVerificationFailed verificationFailed =
+        (FirebaseAuthException exception) {
+      showsnackbar(context, exception.toString());
+    };
+    // ignore: prefer_function_declarations_over_variables
+    PhoneCodeSent codeSent =
+        (String? verificationId, [int? forceResendingtoken]) {
+      showsnackbar(context, "code sent to provide number");
+      setdata(verificationId);
+    };
+
+    // ignore: prefer_function_declarations_over_variables
+    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
+        (String? verificationId) {
+      showsnackbar(context, "Time out");
+    };
+    try {
+      var result = await _auth.verifyPhoneNumber(
+          timeout: const Duration(seconds: 60),
+          phoneNumber: phoneNumber,
+          verificationCompleted: verificationCompleted,
+          verificationFailed: verificationFailed,
+          codeSent: codeSent,
+          codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+      debugPrint(phoneNumber);
+    } catch (e) {
+      showsnackbar(context, e.toString());
+    }
+  }
+
+  Future sign_with_phoneNumber(
+      String verificationId, String smsCode, BuildContext context) async {
+    try {
+      AuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId, smsCode: smsCode);
+
+      UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
+      showsnackbar(context, "Signed in sucessfully");
+    } catch (e) {
+      showsnackbar(context, e.toString());
+    }
+  }
+
+  Widget showsnackbar(BuildContext context, String text) {
+    return SnackBar(content: Text(text));
   }
 }
