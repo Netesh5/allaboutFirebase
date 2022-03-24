@@ -15,7 +15,9 @@ class _crudState extends State<crud> {
   @override
   Widget build(BuildContext context) {
     final crud = Provider.of<List<Crud>?>(context);
-    if (crud == null) {}
+    if (crud == null) {
+      debugPrint("Null");
+    }
 
     return ListView.builder(
         itemCount: crud!.length,

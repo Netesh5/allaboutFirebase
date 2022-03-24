@@ -1,4 +1,3 @@
-import 'package:firebaseapp/Firebase_functions/screens/home/crud.dart';
 import 'package:flutter/material.dart';
 import 'package:firebaseapp/model/crud_model.dart';
 
@@ -11,9 +10,9 @@ class crudTile extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: ListTile(
-          title: Text(crud.title),
-          subtitle: Text(crud.task),
-          trailing: Text(crud.time),
+          title: Text(crud!.title),
+          subtitle: Text(crud!.task),
+          trailing: Text(crud!.time),
         ),
       ),
     );

@@ -8,8 +8,14 @@ import 'package:provider/provider.dart';
 
 import '../../../model/crud_model.dart';
 
-class home extends StatelessWidget {
+class home extends StatefulWidget {
+  @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
   AuthServices _auth = AuthServices();
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Crud>?>.value(
