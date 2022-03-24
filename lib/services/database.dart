@@ -1,9 +1,10 @@
 import "package:cloud_firestore/cloud_firestore.dart";
+import 'package:firebaseapp/model/crud_model.dart';
 
 class DatabaseService {
-  final String uid;
+  final String? uid;
 
-  DatabaseService({required this.uid});
+  DatabaseService({this.uid});
   CollectionReference collectionReference =
       FirebaseFirestore.instance.collection("CRUD");
 
@@ -13,5 +14,18 @@ class DatabaseService {
       "task": task,
       "time": time,
     });
+  }
+
+  List<Crud> _crudListformSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return Crud(
+          title: doc.get('title') ?? "",
+          task: doc.get('task') ?? "",
+          time: doc.get('time') ?? "0");
+    }).toList();
+  }
+
+  Stream<List<Crud>> get crud {
+    return collectionReference.snapshots().map(_crudListformSnapshot);
   }
 }
