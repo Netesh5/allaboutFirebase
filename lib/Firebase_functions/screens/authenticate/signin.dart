@@ -165,6 +165,7 @@ class sign_in_with_google extends StatefulWidget {
 
 class _sign_in_with_googleState extends State<sign_in_with_google> {
   AuthServices _auth = AuthServices();
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -176,12 +177,22 @@ class _sign_in_with_googleState extends State<sign_in_with_google> {
       height: 40,
       child: TextButton.icon(
         onPressed: () async {
+          setState(() {
+            loading = true;
+          });
           final result = await _auth.sign_in_with_google();
+          if (result == null) {
+            setState(() {
+              loading = false;
+            });
+          }
         },
-        label: const Text(
-          "Sign in with Google",
-          style: TextStyle(color: Colors.black),
-        ),
+        label: loading
+            ? loadingindicator()
+            : const Text(
+                "Sign in with Google",
+                style: TextStyle(color: Colors.black),
+              ),
         icon: Image.asset('Assets/Images/google_logo.png'),
       ),
     );

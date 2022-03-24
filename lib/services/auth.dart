@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseapp/model/user.dart';
+import 'package:firebaseapp/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -40,14 +41,17 @@ class AuthServices {
   }
 
 //Register in with email-password
-  Future register_with_email_password(String email, String password) async {
+  Future register_with_email_password(
+      String email, String password, BuildContext context) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
-      return _userfromFirebaseuser(user!);
+      await DatabaseService(uid: user!.uid)
+          .updateUserData("Drink water", "Drink 1 litre water", "3:00");
+      return _userfromFirebaseuser(user);
     } catch (e) {
-      debugPrint(e.toString());
+      showsnackbar(context, e.toString());
       return null;
     }
   }
@@ -86,6 +90,8 @@ class AuthServices {
 
         try {
           UserCredential result = await _auth.signInWithCredential(credential);
+          await DatabaseService(uid: result.user!.uid)
+              .updateUserData("Drink water", "Drink 1 litre water", "3:00");
         } catch (e) {
           debugPrint(e.toString());
         }
@@ -151,7 +157,8 @@ class AuthServices {
     }
   }
 
-  Widget showsnackbar(BuildContext context, String text) {
-    return SnackBar(content: Text(text));
+  void showsnackbar(BuildContext context, String text) {
+    final snackBar = SnackBar(content: Text(text));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

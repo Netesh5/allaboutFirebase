@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebaseapp/model/user.dart';
 import 'package:firebaseapp/services/auth.dart';
+import 'package:firebaseapp/services/database.dart';
 import "package:flutter/material.dart";
 
 class register extends StatefulWidget {
@@ -104,7 +107,8 @@ class _registerState extends State<register> {
                         loading = true;
                       });
                       dynamic result = await _auth.register_with_email_password(
-                          email!, password!);
+                          email!, password!, context);
+
                       if (result == null) {
                         setState(() {
                           error = 'Enter valid email and password';
