@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class crud extends StatefulWidget {
-  crud({Key? key}) : super(key: key);
-
   @override
   State<crud> createState() => _crudState();
 }
@@ -14,13 +12,9 @@ class crud extends StatefulWidget {
 class _crudState extends State<crud> {
   @override
   Widget build(BuildContext context) {
-    final crud = Provider.of<List<Crud>?>(context);
-    if (crud == null) {
-      debugPrint("Null");
-    }
-
+    final crud = Provider.of<List<Crud>?>(context) ?? [];
     return ListView.builder(
-        itemCount: crud!.length,
+        itemCount: crud.length,
         itemBuilder: (context, index) {
           return crudTile(crud: crud[index]);
         });

@@ -6,13 +6,13 @@ class crudTile extends StatelessWidget {
   crudTile({this.crud});
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Card(
         child: ListTile(
           title: Text(crud!.title),
           subtitle: Text(crud!.task),
-          trailing: Text(crud!.time),
+          trailing: Text("Time: ${crud!.time}"),
         ),
       ),
     );

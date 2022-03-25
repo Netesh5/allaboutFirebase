@@ -5,7 +5,6 @@ import 'package:firebaseapp/services/auth.dart';
 import 'package:firebaseapp/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../model/crud_model.dart';
 
 class home extends StatefulWidget {
@@ -22,6 +21,15 @@ class _homeState extends State<home> {
       value: DatabaseService().crud,
       initialData: null,
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.amberAccent,
+            child: const Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              _showBottomSheet();
+            }),
         appBar: AppBar(
           title: const Text(
             "CRUD Operations",
@@ -40,15 +48,20 @@ class _homeState extends State<home> {
           ],
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                crud(),
-              ],
-            ),
-          ),
+          child: crud(),
         ),
       ),
     );
+  }
+
+  void _showBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            height: 400,
+            child: const Text("Bottom Sheet"),
+          );
+        });
   }
 }
