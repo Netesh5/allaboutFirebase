@@ -59,8 +59,11 @@ class _homeState extends State<home> {
     showModalBottomSheet(
         context: context,
         builder: (context) {
-          return Container(
-            child: crud_form(),
+          return SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height / 1.6,
+              child: crud_form(),
+            ),
           );
         });
   }

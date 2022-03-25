@@ -114,10 +114,16 @@ class _crud_formState extends State<crud_form> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: TextButton(
-                            onPressed: () {
-                              debugPrint(_currentTitle);
-                              debugPrint(_currentTask);
-                              debugPrint(_currentTime);
+                            onPressed: () async {
+                              if (_formkey.currentState!.validate()) {
+                                await DatabaseService(uid: user.uid)
+                                    .updateUserData(
+                                  _currentTitle!,
+                                  _currentTask!,
+                                  _currentTime!,
+                                );
+                                Navigator.pop(context);
+                              }
                             },
                             child: const Text(
                               "Submit",
