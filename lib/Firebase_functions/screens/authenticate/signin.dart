@@ -132,7 +132,7 @@ class _sign_in_with_email_passwordState
                     loading = true;
                   });
                   dynamic result = await _auth.sign_in_with_email_password(
-                      email!, password!);
+                      email!, password!, context);
                   if (result == null) {
                     setState(() {
                       error = "Enter valid email and password";

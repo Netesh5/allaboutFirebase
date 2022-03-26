@@ -57,15 +57,15 @@ class AuthServices {
   }
 
 //Sign in with email-password
-  Future sign_in_with_email_password(String email, String password) async {
+  Future sign_in_with_email_password(
+      String email, String password, BuildContext context) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
       return _userfromFirebaseuser(user!);
     } catch (e) {
-      debugPrint(e.toString());
-      return null;
+      showsnackbar(context, e.toString());
     }
   }
 
@@ -158,7 +158,11 @@ class AuthServices {
   }
 
   void showsnackbar(BuildContext context, String text) {
-    final snackBar = SnackBar(content: Text(text));
+    final snackBar = SnackBar(
+      content: Text(
+        text,
+      ),
+    );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
