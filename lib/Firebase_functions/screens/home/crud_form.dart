@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebaseapp/loading.dart';
+import 'package:firebaseapp/constant/loading.dart';
 import 'package:firebaseapp/model/user.dart';
 import 'package:firebaseapp/services/database.dart';
 import 'package:flutter/material.dart';

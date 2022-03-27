@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 import 'package:firebaseapp/Firebase_functions/screens/authenticate/sign_with_mobile_screen.dart';
-import 'package:firebaseapp/loading.dart';
+import 'package:firebaseapp/constant/loading.dart';
 import 'package:firebaseapp/services/auth.dart';
 import 'package:flutter/material.dart';
 
