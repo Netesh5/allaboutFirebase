@@ -4,13 +4,14 @@ import 'package:firebaseapp/main.dart';
 import 'package:flutter/widgets.dart';
 
 class db {
-  Stream<QuerySnapshot> crud =
+  final Stream<QuerySnapshot> crud =
       FirebaseFirestore.instance.collection("CRUD").snapshots();
 
   List docsItem = [];
-  fetchData(AsyncSnapshot<QuerySnapshot?>? snapshot) {
-    snapshot!.data!.docs.map((DocumentSnapshot documentSnapshot) {
-      Map data = documentSnapshot.data() as Map<String, dynamic>;
+  fetchData(AsyncSnapshot<QuerySnapshot> snapshot) {
+    snapshot.data!.docs.map((DocumentSnapshot documentSnapshot) {
+      Map<String, dynamic> data =
+          documentSnapshot.data()! as Map<String, dynamic>;
       docsItem.add(data);
     }).toList();
   }

@@ -13,9 +13,9 @@ class _crud2State extends State<crud2> {
   db _db = db();
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot?>(
+    return StreamBuilder<QuerySnapshot>(
         stream: _db.crud,
-        builder: (context, AsyncSnapshot<QuerySnapshot?>? snapshot) {
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           _db.fetchData(snapshot);
           return ListView.builder(
             itemCount: _db.docsItem.length,
