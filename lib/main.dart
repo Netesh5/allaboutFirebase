@@ -33,6 +33,9 @@ class firebaseState extends State<firebase> {
       initialData: null,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: "ubuntu",
+        ),
         home: wrapper(),
       ),
     );

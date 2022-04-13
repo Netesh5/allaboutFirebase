@@ -1,6 +1,7 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import 'package:firebaseapp/model/crud_model.dart';
 import 'package:firebaseapp/model/user.dart';
+import 'package:flutter/widgets.dart';
 
 class DatabaseService {
   final String? uid;
@@ -46,4 +47,12 @@ class DatabaseService {
         .snapshots()
         .map((_userDatafromSnapshot));
   }
+
+  final List docsData = [];
+  // List? fetchDataformFireStore(DocumentSnapshot snapshot) {
+  //   snapshot.docs.map((DocumentSnapshot documentSnapshot) {
+  //     Map data = documentSnapshot.data() as Map;
+  //     docsData.add(data);
+  //   }).toList();
+  // }
 }

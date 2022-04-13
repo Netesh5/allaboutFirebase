@@ -19,6 +19,7 @@ class _crud_formState extends State<crud_form> {
   String? _currentTask;
   String? _currentTitle;
   String? _currentTime;
+  DatabaseService? _databaseService;
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<users>(context);
@@ -122,6 +123,7 @@ class _crud_formState extends State<crud_form> {
                                   _currentTask!,
                                   _currentTime!,
                                 );
+
                                 Navigator.pop(context);
                               }
                             },
