@@ -13,4 +13,6 @@ class db {
       docsItem.add(data);
     }).toList();
   }
+
+  writeData(AsyncSnapshot<QuerySnapshot> snapshot) {}
 }
