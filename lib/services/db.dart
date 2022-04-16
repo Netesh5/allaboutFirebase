@@ -15,4 +15,8 @@ class db {
   }
 
   writeData(AsyncSnapshot<QuerySnapshot> snapshot) {}
+
+  deleteData(AsyncSnapshot<QuerySnapshot> snapshot){
+    
+  }
 }
