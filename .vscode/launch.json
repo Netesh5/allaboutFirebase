@@ -1,18 +1,18 @@
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "firebaseapp",
-            "request": "launch",
-            "type": "dart",
-            "args": [
-                "-d",
-                "chrome",
-                "--web-hostname",
-                "localhost",
-                "--web-port",
-                "5000"
-            ]
-        }
-    ]
-}
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "firebaseapp",
+//             "request": "launch",
+//             "type": "dart",
+//             "args": [
+//                 "-d",
+//                 "chrome",
+//                 "--web-hostname",
+//                 "localhost",
+//                 "--web-port",
+//                 "5000"
+//             ]
+//         }
+//     ]
+// }

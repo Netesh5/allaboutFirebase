@@ -7,7 +7,7 @@ class db {
 
   List docsItem = [];
   fetchData(AsyncSnapshot<QuerySnapshot> snapshot) {
-    snapshot.data!.docs.map((DocumentSnapshot documentSnapshot) {
+    snapshot.data?.docs.map((DocumentSnapshot documentSnapshot) {
       Map<String, dynamic> data =
           documentSnapshot.data()! as Map<String, dynamic>;
       docsItem.add(data);

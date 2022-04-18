@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:firebaseapp/services/auth.dart';
-import 'package:flutter/semantics.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/style.dart';

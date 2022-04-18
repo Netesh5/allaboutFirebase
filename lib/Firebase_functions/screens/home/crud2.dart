@@ -18,12 +18,12 @@ class _crud2State extends State<crud2> {
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           _db.fetchData(snapshot);
           return ListView.builder(
-            itemCount: _db.docsItem.length,
+            itemCount: _db.docsItem!.length,
             itemBuilder: (context, index) {
               return ListTile(
-                title: Text(_db.docsItem[index]["title"]),
-                subtitle: Text(_db.docsItem[index]["task"]),
-                trailing: Text("Time: ${_db.docsItem[index]["time"]}"),
+                title: Text(_db.docsItem![index]["title"]),
+                subtitle: Text(_db.docsItem![index]["task"]),
+                trailing: Text("Time: ${_db.docsItem![index]["time"]}"),
               );
             },
           );
