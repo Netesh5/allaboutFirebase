@@ -27,15 +27,17 @@ class _crud2State extends State<crud2> {
                 secondaryBackground: IconButton(
                   alignment: Alignment.centerRight,
                   icon: Icon(Icons.delete),
-                  onPressed: () {
-                    _db.deleteData(index);
-                  },
+                  onPressed: () {},
                 ),
                 background: IconButton(
                   alignment: Alignment.centerLeft,
                   icon: Icon(Icons.edit),
                   onPressed: () {},
                 ),
+                direction: DismissDirection.endToStart,
+                onDismissed: (direction) {
+                  _db.deleteData(_db.docsItem[index]["id"]);
+                },
                 child: ListTile(
                   title: Text(_db.docsItem[index]["title"]),
                   subtitle: Text(_db.docsItem[index]["task"]),

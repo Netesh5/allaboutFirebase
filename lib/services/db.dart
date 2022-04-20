@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebaseapp/model/user.dart';
 import 'package:flutter/widgets.dart';
 
 class db {
   final Stream<QuerySnapshot> crud =
       FirebaseFirestore.instance.collection("CRUD").snapshots();
-  CollectionReference _collectionReference =
+  final CollectionReference _collectionReference =
       FirebaseFirestore.instance.collection("CRUD");
 
   List docsItem = [];
+
   fetchData(AsyncSnapshot<QuerySnapshot> snapshot) {
     snapshot.data?.docs.map((DocumentSnapshot documentSnapshot) {
       Map<String, dynamic> data =
@@ -21,7 +21,10 @@ class db {
   writeData(AsyncSnapshot<QuerySnapshot> snapshot) {}
 
   Future<void> deleteData(id) {
-    return _collectionReference.doc(id).delete();
+    return _collectionReference
+        .doc(id)
+        .delete()
+        .then((value) => debugPrint("Item deleted"));
   }
 
   updateData(AsyncSnapshot<QuerySnapshot> snapshot) {}
