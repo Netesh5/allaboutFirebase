@@ -27,7 +27,9 @@ class _crud2State extends State<crud2> {
                 secondaryBackground: IconButton(
                   alignment: Alignment.centerRight,
                   icon: Icon(Icons.delete),
-                  onPressed: () {},
+                  onPressed: () {
+                    _db.deleteData(index);
+                  },
                 ),
                 background: IconButton(
                   alignment: Alignment.centerLeft,
