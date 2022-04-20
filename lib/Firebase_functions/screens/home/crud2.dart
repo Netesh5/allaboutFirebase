@@ -11,6 +11,8 @@ class crud2 extends StatefulWidget {
 
 class _crud2State extends State<crud2> {
   db _db = db();
+  List color = [Colors.purpleAccent, Colors.blueAccent];
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -20,10 +22,23 @@ class _crud2State extends State<crud2> {
           return ListView.builder(
             itemCount: _db.docsItem.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(_db.docsItem[index]["title"]),
-                subtitle: Text(_db.docsItem[index]["task"]),
-                trailing: Text("Time: ${_db.docsItem[index]["time"]}"),
+              return Dismissible(
+                key: ObjectKey(_db.docsItem.length),
+                secondaryBackground: IconButton(
+                  alignment: Alignment.centerRight,
+                  icon: Icon(Icons.delete),
+                  onPressed: () {},
+                ),
+                background: IconButton(
+                  alignment: Alignment.centerLeft,
+                  icon: Icon(Icons.edit),
+                  onPressed: () {},
+                ),
+                child: ListTile(
+                  title: Text(_db.docsItem[index]["title"]),
+                  subtitle: Text(_db.docsItem[index]["task"]),
+                  trailing: Text("Time: ${_db.docsItem[index]["time"]}"),
+                ),
               );
             },
           );
