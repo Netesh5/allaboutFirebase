@@ -36,7 +36,7 @@ class _crud2State extends State<crud2> {
                 ),
                 direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
-                  _db.deleteData(_db.docsItem[index]["id"]);
+                  _db.deleteData(_db.docsItem[index]["id"], context);
                 },
                 child: ListTile(
                   title: Text(_db.docsItem[index]["title"] ?? "title"),

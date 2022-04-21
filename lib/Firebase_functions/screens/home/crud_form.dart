@@ -126,7 +126,7 @@ class _crud_formState extends State<crud_form> {
                                 //   _currentTime!,
                                 // );
                                 await _db.writeData(_currentTitle!,
-                                    _currentTask!, _currentTime!);
+                                    _currentTask!, _currentTime!, context);
 
                                 Navigator.pop(context);
                               }

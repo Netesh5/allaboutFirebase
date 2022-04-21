@@ -19,29 +19,29 @@ class db {
     }).toList();
   }
 
-  // writeData(String title, String task, String time) {
-  //   return _collectionReference.add({
-  //     "title": title,
-  //     "task": task,
-  //     "time": time,
-  //   }).then((value) => const SnackBar(content: Text("Task Added")));
-  // }
+  writeData(String title, String task, String time, context) {
+    return _collectionReference.add({
+      "title": title,
+      "task": task,
+      "time": time,
+    }).then((value) => showsnackbar(context, "Task Added"));
+  }
 
-  Future<void> deleteData(id) {
+  Future<void> deleteData(id, context) {
     return _collectionReference
         .doc(id)
         .delete()
-        .then((value) => const SnackBar(content: Text("Task deleted")));
+        .then((value) => showsnackbar(context, "Task deleted"));
   }
 
   updateData(AsyncSnapshot<QuerySnapshot> snapshot) {}
-}
 
-void showsnackbar(BuildContext context, String text) {
-  final snackBar = SnackBar(
-    content: Text(
-      text,
-    ),
-  );
-  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  void showsnackbar(BuildContext context, String text) {
+    final snackBar = SnackBar(
+      content: Text(
+        text,
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }
