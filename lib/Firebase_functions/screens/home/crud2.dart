@@ -39,8 +39,8 @@ class _crud2State extends State<crud2> {
                   _db.deleteData(_db.docsItem[index]["id"]);
                 },
                 child: ListTile(
-                  title: Text(_db.docsItem[index]["title"]),
-                  subtitle: Text(_db.docsItem[index]["task"]),
+                  title: Text(_db.docsItem[index]["title"] ?? "title"),
+                  subtitle: Text(_db.docsItem[index]["task"] ?? "task"),
                   trailing: Text("Time: ${_db.docsItem[index]["time"]}"),
                 ),
               );

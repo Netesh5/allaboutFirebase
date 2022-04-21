@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class db {
@@ -18,14 +19,29 @@ class db {
     }).toList();
   }
 
-  writeData(AsyncSnapshot<QuerySnapshot> snapshot) {}
+  // writeData(String title, String task, String time) {
+  //   return _collectionReference.add({
+  //     "title": title,
+  //     "task": task,
+  //     "time": time,
+  //   }).then((value) => const SnackBar(content: Text("Task Added")));
+  // }
 
   Future<void> deleteData(id) {
     return _collectionReference
         .doc(id)
         .delete()
-        .then((value) => debugPrint("Item deleted"));
+        .then((value) => const SnackBar(content: Text("Task deleted")));
   }
 
   updateData(AsyncSnapshot<QuerySnapshot> snapshot) {}
+}
+
+void showsnackbar(BuildContext context, String text) {
+  final snackBar = SnackBar(
+    content: Text(
+      text,
+    ),
+  );
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }

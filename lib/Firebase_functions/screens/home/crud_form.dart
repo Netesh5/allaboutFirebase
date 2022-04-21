@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseapp/constant/loading.dart';
 import 'package:firebaseapp/model/user.dart';
 import 'package:firebaseapp/services/database.dart';
+import 'package:firebaseapp/services/db.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,7 @@ class _crud_formState extends State<crud_form> {
   String? _currentTitle;
   String? _currentTime;
   DatabaseService? _databaseService;
+  db _db = db();
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<users>(context);
@@ -117,12 +119,14 @@ class _crud_formState extends State<crud_form> {
                         child: TextButton(
                             onPressed: () async {
                               if (_formkey.currentState!.validate()) {
-                                await DatabaseService(uid: user.uid)
-                                    .updateUserData(
-                                  _currentTitle!,
-                                  _currentTask!,
-                                  _currentTime!,
-                                );
+                                // await DatabaseService(uid: user.uid)
+                                //     .updateUserData(
+                                //   _currentTitle!,
+                                //   _currentTask!,
+                                //   _currentTime!,
+                                // );
+                                await _db.writeData(_currentTitle!,
+                                    _currentTask!, _currentTime!);
 
                                 Navigator.pop(context);
                               }
