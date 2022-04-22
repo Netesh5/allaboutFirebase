@@ -34,7 +34,13 @@ class db {
         .then((value) => showsnackbar(context, "Task deleted"));
   }
 
-  updateData(AsyncSnapshot<QuerySnapshot> snapshot) {}
+  Future updateData(id, title, task, time, context) {
+    return _collectionReference.doc(id).update({
+      "title": title,
+      "task": task,
+      "time": time,
+    }).then((value) => showsnackbar(context, "Task updated"));
+  }
 
   void showsnackbar(BuildContext context, String text) {
     final snackBar = SnackBar(

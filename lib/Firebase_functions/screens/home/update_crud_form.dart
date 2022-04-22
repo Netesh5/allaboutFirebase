@@ -5,14 +5,18 @@ import 'package:firebaseapp/services/db.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class crud_form extends StatefulWidget {
-  const crud_form({Key? key}) : super(key: key);
+class update_crud_form extends StatefulWidget {
+  final String? id;
+  String? title;
+  String? task;
+  String? timed;
+  update_crud_form({this.title, this.task, this.timed, this.id});
 
   @override
-  State<crud_form> createState() => _crud_formState();
+  State<update_crud_form> createState() => update_crud_formState();
 }
 
-class _crud_formState extends State<crud_form> {
+class update_crud_formState extends State<update_crud_form> {
   final _formkey = GlobalKey<FormState>();
   TimeOfDay selectedTime = TimeOfDay.now();
   TextEditingController timeinput = TextEditingController();
@@ -47,6 +51,7 @@ class _crud_formState extends State<crud_form> {
                         height: 20,
                       ),
                       TextFormField(
+                          initialValue: widget.title,
                           onChanged: (value) {
                             setState(() {
                               _currentTitle = value;
@@ -63,11 +68,14 @@ class _crud_formState extends State<crud_form> {
                         height: 20,
                       ),
                       TextFormField(
+                        initialValue: widget.task,
                         validator: (value) {
                           return value!.isEmpty ? "Enter Task" : null;
                         },
                         onChanged: (value) {
-                          _currentTask = value;
+                          setState(() {
+                            _currentTask = value;
+                          });
                         },
                         decoration: InputDecoration(
                             hintText: "Enter Task",
@@ -116,7 +124,7 @@ class _crud_formState extends State<crud_form> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: TextButton(
-                            onPressed: () async {
+                            onPressed: () {
                               if (_formkey.currentState!.validate()) {
                                 // await DatabaseService(uid: user.uid)
                                 //     .updateUserData(
@@ -124,8 +132,9 @@ class _crud_formState extends State<crud_form> {
                                 //   _currentTask!,
                                 //   _currentTime!,
                                 // );
-                                await _db.writeData(_currentTitle!,
-                                    _currentTask!, _currentTime!, context);
+                                _db.updateData(widget.id, _currentTitle,
+                                    _currentTask, _currentTime, context);
+
                                 Navigator.pop(context);
                               }
                             },
