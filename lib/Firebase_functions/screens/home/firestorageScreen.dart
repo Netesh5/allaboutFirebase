@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebaseapp/constant/loading.dart';
 import 'package:firebaseapp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class storageScreen extends StatefulWidget {
   const storageScreen({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class storageScreen extends StatefulWidget {
 class _storageScreenState extends State<storageScreen> {
   String imagePath = "";
   var file;
+  bool isloading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,19 +67,25 @@ class _storageScreenState extends State<storageScreen> {
               ),
               Container(
                 width: 150,
+                height: 50,
                 color: Colors.amberAccent,
-                child: TextButton.icon(
-                    onPressed: () async {
-                      await uploadImage(file);
-                    },
-                    icon: const Icon(
-                      Icons.upload,
-                      color: Colors.black,
-                    ),
-                    label: const Text(
-                      "Upload",
-                      style: TextStyle(color: Colors.black),
-                    )),
+                child: isloading
+                    ? loadingindicator()
+                    : TextButton.icon(
+                        onPressed: () async {
+                          setState(() {
+                            isloading = true;
+                          });
+                          await uploadImage(file);
+                        },
+                        icon: const Icon(
+                          Icons.upload,
+                          color: Colors.black,
+                        ),
+                        label: const Text(
+                          "Upload",
+                          style: TextStyle(color: Colors.black),
+                        )),
               )
             ],
           ),
@@ -86,7 +95,10 @@ class _storageScreenState extends State<storageScreen> {
   }
 
   Future<void> uploadImage(XFile file) async {
-    var ref = FirebaseStorage.instance.ref("files");
+    var ref = FirebaseStorage.instance.ref("files/${file.name}");
     await ref.putFile(File(file.path));
+    setState(() {
+      isloading = false;
+    });
   }
 }
