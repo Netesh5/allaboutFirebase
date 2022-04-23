@@ -40,6 +40,9 @@ dependencies:
   provider: ^6.0.2
   google_sign_in: ^5.2.4
   otp_text_field: ^1.1.2
+  firebase_storage: ^10.2.13
+  firebase_storage_web: ^3.2.13
+  image_picker: ^0.8.5
 
 
 dev_dependencies:

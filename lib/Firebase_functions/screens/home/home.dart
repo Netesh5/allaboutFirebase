@@ -1,8 +1,11 @@
 // ignore_for_file: deprecated_member_use
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebaseapp/Firebase_functions/screens/home/crud.dart';
 import 'package:firebaseapp/Firebase_functions/screens/home/crud2.dart';
 import 'package:firebaseapp/Firebase_functions/screens/home/crud_form.dart';
+import 'package:firebaseapp/Firebase_functions/screens/home/firestorageScreen.dart';
 import 'package:firebaseapp/services/auth.dart';
 import 'package:firebaseapp/services/database.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +43,15 @@ class _homeState extends State<home> {
           backgroundColor: Colors.amberAccent,
           centerTitle: true,
           actions: [
+            FlatButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => storageScreen()));
+                },
+                child: const Text(
+                  "Firestorage",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
             FlatButton(
                 child: const Text("Log out",
                     style: TextStyle(

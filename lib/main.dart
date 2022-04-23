@@ -36,8 +36,8 @@ class firebaseState extends State<firebase> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          fontFamily: "ubuntu",
-        ),
+            fontFamily: "ubuntu",
+            iconTheme: const IconThemeData(color: Colors.black)),
         home: wrapper(),
       ),
     );
