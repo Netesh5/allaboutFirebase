@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebaseapp/Firebase_functions/screens/home/firesotrageDownloadScreen.dart';
+import 'package:firebaseapp/Firebase_functions/screens/home/pushnotificationScreen.dart';
 import 'package:firebaseapp/constant/loading.dart';
 import 'package:firebaseapp/main.dart';
 import 'package:firebaseapp/services/db.dart';
@@ -113,6 +114,24 @@ class _storageScreenState extends State<storageScreen> {
                     },
                     child: const Text(
                       "Go to download page",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black),
+                    )),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Container(
+                color: Colors.amberAccent,
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => pushNotificationScreen()));
+                    },
+                    child: const Text(
+                      "Go to Notification service",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                     )),
