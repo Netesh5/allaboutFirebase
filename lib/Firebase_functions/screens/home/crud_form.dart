@@ -23,9 +23,9 @@ class _crud_formState extends State<crud_form> {
   db _db = db();
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<users>(context);
+    final user = Provider.of<users?>(context);
     return StreamBuilder<userData>(
-        stream: DatabaseService(uid: user.uid).datafromSnapshot,
+        stream: DatabaseService(uid: user!.uid).datafromSnapshot,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             //userData userdata = snapshot.data;

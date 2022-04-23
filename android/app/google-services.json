@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "735913926564-us3fl1mfom0o9kdj8fb3mm7uv9jndg20.apps.googleusercontent.com",
+          "client_id": "735913926564-44fohg7b1v1oo19vm56f6sgg68h7t7vf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.firebaseapp",
-            "certificate_hash": "3d53025cd1eb221837a64196962a052a0868d4ae"
+            "certificate_hash": "ba2702614ab4d7b1bdee1cafc453e79137a3a668"
           }
         },
         {
@@ -37,6 +37,13 @@
             {
               "client_id": "735913926564-04ub0huc4rav954edjf5r0gh80v2ga0a.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "735913926564-mbrmv13e5qnubirs674sirlmfgpjqba6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.firebaseapp"
+              }
             }
           ]
         }

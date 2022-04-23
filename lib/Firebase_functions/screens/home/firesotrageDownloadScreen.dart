@@ -1,11 +1,8 @@
 import 'dart:io';
-
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebaseapp/constant/loading.dart';
 import 'package:firebaseapp/services/db.dart';
 import 'package:flutter/material.dart';
 import 'package:image_downloader/image_downloader.dart';
-import 'package:image_picker/image_picker.dart';
 
 class storageDownloadScreen extends StatefulWidget {
   String downloadUrl = "";

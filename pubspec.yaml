@@ -44,6 +44,8 @@ dependencies:
   firebase_storage_web: ^3.2.13
   image_picker: ^0.8.5
   image_downloader: ^0.31.0
+  firebase_messaging: ^11.2.14
+  flutter_local_notifications: ^9.4.0
 
 
 dev_dependencies:

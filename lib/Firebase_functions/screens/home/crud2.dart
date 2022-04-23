@@ -37,12 +37,12 @@ class _crud2State extends State<crud2> {
                   key: ObjectKey(_db.docsItem.length),
                   secondaryBackground: IconButton(
                     alignment: Alignment.centerRight,
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                     onPressed: () {},
                   ),
                   background: IconButton(
                     alignment: Alignment.centerLeft,
-                    icon: Icon(Icons.edit),
+                    icon: const Icon(Icons.edit),
                     onPressed: () {},
                   ),
                   direction: DismissDirection.endToStart,
