@@ -2,22 +2,22 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebaseapp/constant/loading.dart';
-import 'package:firebaseapp/main.dart';
+import 'package:firebaseapp/services/db.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
 
-class storageScreen extends StatefulWidget {
-  const storageScreen({Key? key}) : super(key: key);
+class storageDownloadScreen extends StatefulWidget {
+  const storageDownloadScreen({Key? key}) : super(key: key);
 
   @override
-  State<storageScreen> createState() => _storageScreenState();
+  State<storageDownloadScreen> createState() => _storageDownloadScreenState();
 }
 
-class _storageScreenState extends State<storageScreen> {
+class _storageDownloadScreenState extends State<storageDownloadScreen> {
   String imagePath = "";
   var file;
   bool isloading = false;
+  db _db = db();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,17 +73,23 @@ class _storageScreenState extends State<storageScreen> {
                     ? loadingindicator()
                     : TextButton.icon(
                         onPressed: () async {
-                          setState(() {
-                            isloading = true;
-                          });
-                          await uploadImage(file);
+                          if (file != null) {
+                            setState(() {
+                              isloading = true;
+                            });
+                          }
+                          try {
+                            await uploadImage(file);
+                          } catch (e) {
+                            _db.showsnackbar(context, "No file choosen");
+                          }
                         },
                         icon: const Icon(
-                          Icons.upload,
+                          Icons.download,
                           color: Colors.black,
                         ),
                         label: const Text(
-                          "Upload",
+                          "Download",
                           style: TextStyle(color: Colors.black),
                         )),
               )
@@ -96,7 +102,9 @@ class _storageScreenState extends State<storageScreen> {
 
   Future<void> uploadImage(XFile file) async {
     var ref = FirebaseStorage.instance.ref("files/${file.name}");
-    await ref.putFile(File(file.path));
+    var result = await ref
+        .putFile(File(file.path))
+        .then((p0) => _db.showsnackbar(context, "File uploaded"));
     setState(() {
       isloading = false;
     });
