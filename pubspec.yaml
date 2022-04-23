@@ -43,6 +43,7 @@ dependencies:
   firebase_storage: ^10.2.13
   firebase_storage_web: ^3.2.13
   image_picker: ^0.8.5
+  image_downloader: ^0.31.0
 
 
 dev_dependencies:

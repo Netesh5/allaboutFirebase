@@ -21,6 +21,7 @@ class _storageScreenState extends State<storageScreen> {
   var file;
   bool isloading = false;
   db _db = db();
+  String downloadUrl = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,7 +108,8 @@ class _storageScreenState extends State<storageScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => storageDownloadScreen()));
+                              builder: (context) => storageDownloadScreen(
+                                  downloadUrl: downloadUrl)));
                     },
                     child: const Text(
                       "Go to download page",
@@ -130,5 +132,6 @@ class _storageScreenState extends State<storageScreen> {
     setState(() {
       isloading = false;
     });
+    downloadUrl = await ref.getDownloadURL();
   }
 }
