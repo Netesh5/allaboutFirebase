@@ -11,7 +11,15 @@ class pushNotificationScreen extends StatefulWidget {
 
 //to start firebase background services as we need to send notification while running,inBackground or closed
 class _pushNotificationScreenState extends State<pushNotificationScreen> {
+  String deviceTokenToSendPushNotification = "";
   @override
+  Future<void> getDeviceTokenToSendNotification() async {
+    final FirebaseMessaging _fcm = FirebaseMessaging.instance;
+    final token = await _fcm.getToken();
+    deviceTokenToSendPushNotification = token.toString();
+    print("Token Value $deviceTokenToSendPushNotification");
+  }
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -64,6 +72,7 @@ class _pushNotificationScreenState extends State<pushNotificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    getDeviceTokenToSendNotification();
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
