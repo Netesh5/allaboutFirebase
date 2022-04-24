@@ -4,11 +4,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebaseapp/Firebase_functions/screens/home/firesotrageDownloadScreen.dart';
 import 'package:firebaseapp/Firebase_functions/screens/home/pushnotificationScreen.dart';
 import 'package:firebaseapp/constant/loading.dart';
-import 'package:firebaseapp/main.dart';
+
 import 'package:firebaseapp/services/db.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
 
 class storageScreen extends StatefulWidget {
   const storageScreen({Key? key}) : super(key: key);

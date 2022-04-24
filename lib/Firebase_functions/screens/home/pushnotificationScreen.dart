@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
+import '../../../pushnotification/demoScreen.dart';
 import '../../../pushnotification/localnotification.dart';
 
 class pushNotificationScreen extends StatefulWidget {
@@ -10,11 +11,6 @@ class pushNotificationScreen extends StatefulWidget {
 
 //to start firebase background services as we need to send notification while running,inBackground or closed
 class _pushNotificationScreenState extends State<pushNotificationScreen> {
-  Future<void> backgroundHandler(RemoteMessage message) async {
-    debugPrint(message.data.toString());
-    debugPrint(message.notification!.title);
-  }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -27,15 +23,15 @@ class _pushNotificationScreenState extends State<pushNotificationScreen> {
         debugPrint("FirebaseMessaging.instance.getInitialMessage");
         if (message != null) {
           debugPrint("New Notification");
-          // if (message.data['_id'] != null) {
-          //   Navigator.of(context).push(
-          //     MaterialPageRoute(
-          //       builder: (context) => DemoScreen(
-          //         id: message.data['_id'],
-          //       ),
-          //     ),
-          //   );
-          // }
+          if (message.data['_id'] != null) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => demoScreen(
+                  id: message.data['_id'],
+                ),
+              ),
+            );
+          }
         }
       },
     );

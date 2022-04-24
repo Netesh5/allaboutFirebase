@@ -22,12 +22,11 @@ class LocalNotificationService {
 
           // Navigator.of(context).push(
           //   MaterialPageRoute(
-          //     builder: (context) => DemoScreen(
+          //     builder: (context) => demoScreen(
           //       id: id,
           //     ),
           //   ),
           // );
-
         }
       },
     );
