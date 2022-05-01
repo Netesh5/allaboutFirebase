@@ -10,7 +10,7 @@ A new Flutter project that contains all the feature of Firebase .
 
 ## Screenshots :
 
-<img width="330" alt="Screenshot 2022-04-23 at 15 25 13" src="https://user-images.githubusercontent.com/48326144/166131792-04277239-db6e-4673-86cf-32424b4e9376.png"> <img width="330" alt="Screenshot 2022-04-23 at 15 31 51" src="https://user-images.githubusercontent.com/48326144/166131791-1c846e67-047c-426f-9941-6eecadae30f2.png"> <img width="330" alt="Screenshot 2022-04-23 at 15 32 13" src="https://user-images.githubusercontent.com/48326144/166131790-a41f01e9-4087-475a-a0be-e815798653d5.png">
+<img width="240" alt="Screenshot 2022-04-23 at 15 25 13" src="https://user-images.githubusercontent.com/48326144/166131792-04277239-db6e-4673-86cf-32424b4e9376.png"> <img width="240" alt="Screenshot 2022-04-23 at 15 31 51" src="https://user-images.githubusercontent.com/48326144/166131791-1c846e67-047c-426f-9941-6eecadae30f2.png"> <img width="240" alt="Screenshot 2022-04-23 at 15 32 13" src="https://user-images.githubusercontent.com/48326144/166131790-a41f01e9-4087-475a-a0be-e815798653d5.png">
 
 
 <img width="330" alt="Screenshot 2022-04-23 at 16 24 56" src="https://user-images.githubusercontent.com/48326144/166131789-837c2029-f2fd-446b-863b-ca00131cf379.png"> <img width="330" alt="Screenshot 2022-04-23 at 16 25 12" src="https://user-images.githubusercontent.com/48326144/166131788-14ea5660-196b-48ef-b6bc-9af40a7017b4.png"> <img width="330" alt="Screenshot 2022-04-23 at 16 26 05" src="https://user-images.githubusercontent.com/48326144/166131786-5b1d902d-2a60-4c9a-b4f5-36242325c81f.png"> 
