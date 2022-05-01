@@ -1,6 +1,15 @@
 # Firebaseapp
 
-A new Flutter project.
+A new Flutter project that contains all the feature of Firebase .
+
+## Features
+- Authentication : Anonymous signin, Signin with Email, Signin with Google, Register with phone number
+- Firebase Firestore : CRUD Operation
+- Firebase Storage : Upload and download files
+- Push Notification : Notification can be send through firebase or by postman
+
+## Screenshots :
+
 
 ## Getting Started
 
